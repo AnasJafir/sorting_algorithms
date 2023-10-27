@@ -6,13 +6,15 @@
  * @b: Pointer to the second element to be swapped
  * Return: void
  */
-void swap(int *a, int *b)
+void swap(int *array, size_t size, int *a, int *b)
 {
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	if( *a != *b)
+	{
+		*a = *a + *b;
+		*b = *a - *b;
+		*a = *a - *b;
+		print_array((const int *)array, size);
+	}
 }
 
 /**
@@ -27,21 +29,15 @@ void swap(int *a, int *b)
 int partition_lumoto(int *array, int low, int high, size_t size)
 {
 	int pivot = array[high];
-	int i = low - 1;
-	int j;
+	int i, j;
 
-	for (j = low; j <= high - 1; j++)
+	for (i = j = low; j < high; j++)
 	{
 		if (array[j] < pivot)
-		{
-			i++;
-			swap(&array[i], &array[j]);
-			print_array(array, size);
-		}
+			swap(array, size, &array[j], &array[i++]);
 	}
-	swap(&array[i + 1], &array[high]);
-	print_array(array, size);
-	return (i + 1);
+	swap(array, size, &array[i], &array[high]);
+	return (i);
 }
 
 /**
