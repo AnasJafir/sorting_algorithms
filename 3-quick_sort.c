@@ -8,7 +8,7 @@
  */
 void swap(int *array, size_t size, int *a, int *b)
 {
-	if( *a != *b)
+	if (*a != *b)
 	{
 		*a = *a + *b;
 		*b = *a - *b;
