@@ -2,6 +2,8 @@
 
 /**
  * swap - Swaps two elements in an array
+ * @array: data to sort
+ * @size: size of data
  * @a: Pointer to the first element to be swapped
  * @b: Pointer to the second element to be swapped
  * Return: void
@@ -63,14 +65,14 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
 
 /**
  * quick_sort - Sorts an array of integers in ascending order using the
- * quick sort algorithm with the Lomuto partition scheme
+ * quick sorting algorithm
  * @array: The array to be sorted
  * @size: The size of the array
  * Return: void
  */
 void quick_sort(int *array, size_t size)
 {
-	if (!array || size < 2)
+	if (!array || !size || size < 2)
 		return;
 	quick_sort_recursion(array, 0, size - 1, size);
 }
